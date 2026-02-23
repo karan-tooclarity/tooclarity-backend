@@ -1,0 +1,72 @@
+const mongoose = require("mongoose");
+
+const UgPgSchema = new mongoose.Schema({
+  institution: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Institution",
+    required: true,
+    index: true,
+  },
+  branch: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Branch",
+    required: false,
+    index: true,
+  },
+  status: {
+    type: String,
+    enum: ["Active", "Inactive"],
+    default: "Inactive",
+  },
+  courseSubscriptionStartDate: { type: Date },
+  courseSubscriptionEndDate: { type: Date },
+
+  listingType: {
+    type: String,
+    enum: ["free", "paid"],
+    default: "free",
+  },
+  graduationType: {
+    type: String,
+    enum: ["Under Graduation", "Post Graduation"],
+  },
+  streamType: { type: String },
+  selectBranch: { type: String },
+  aboutBranch: { type: String, trim: true },
+  locationURL: { type: String, trim: true },
+  headquatersAddress: { type: String },
+  state: { type: String, trim: true, maxlength: 100 },
+  district: { type: String, trim: true, maxlength: 100 },
+  town: { type: String, trim: true, maxlength: 100 },
+  educationType: { type: String, enum: ["Full time", "Part time", "Distance"] },
+  mode: { type: String, enum: ["Offline", "Online", "Hybrid"] },
+  classSize: { type: String },
+  eligibilityCriteria: { type: String },
+  ownershipType: { type: String },
+  collegeCategory: { type: String },
+  affiliationType: { type: String },
+  courseDuration: { type: String, trim: true, maxlength: 50 },
+  library: { type: String, enum: ["Yes", "No"] },
+  hostelFacility: { type: String, enum: ["Yes", "No"] },
+  entranceExam: { type: String, enum: ["Yes", "No"] },
+  managementQuota: { type: String, enum: ["Yes", "No"] },
+  playground: { type: String, enum: ["Yes", "No"] },
+  busService: { type: String, enum: ["Yes", "No"] },
+  placementDrives: { type: String, enum: ["Yes", "No"] },
+  totalNumberRequires: { type: String },
+  highestPackage: { type: String },
+  averagePackage: { type: String },
+  totalStudentsPlaced: { type: String },
+  mockInterviews: { type: String, enum: ["Yes", "No"] },
+  resumeBuilding: { type: String, enum: ["Yes", "No"] },
+  linkedinOptimization: { type: String, enum: ["Yes", "No"] },
+  priceOfCourse: { type: Number, min: 0 },
+  centerImageUrl: { type: String },
+  installments: { type: String, enum: ["Yes", "No"] },
+  emioptions: { type: String, enum: ["Yes", "No"] },
+  imageUrl: { type: String },
+  brochureUrl: { type: String },
+});
+
+const UgPgCourse = mongoose.model("UgPgCourse", UgPgSchema);
+module.exports = UgPgCourse;

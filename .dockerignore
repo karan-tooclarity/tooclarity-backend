@@ -1,0 +1,8 @@
+node_modules
+.git
+.env
+Dockerfile
+.dockerignore
+jest.config.js
+*.test.js
+__tests__/
